@@ -1,6 +1,7 @@
 package com.nate.quotes.Motivational.Quotes.model;
 
 
+import com.nate.quotes.Motivational.Quotes.enumerations.QuoteCategory;
 import jakarta.persistence.*;
 
 @Entity
@@ -18,16 +19,20 @@ public class Quote {
     private Long id;
     private String author;
     private String quote;
+    @Enumerated(EnumType.STRING)
+    private QuoteCategory quoteCategory;
 
-    public Quote(Long id, String author, String quote) {
+    public Quote(Long id, String author, String quote, QuoteCategory quoteCategory) {
         this.id = id;
         this.author = author;
         this.quote = quote;
+        this.quoteCategory = quoteCategory;
     }
 
-    public Quote(String author, String quote) {
+    public Quote(String author, String quote, QuoteCategory quoteCategory) {
         this.author = author;
         this.quote = quote;
+        this.quoteCategory = quoteCategory;
     }
 
     public Quote() {
@@ -55,6 +60,14 @@ public class Quote {
 
     public void setQuote(String quote) {
         this.quote = quote;
+    }
+
+    public QuoteCategory getQuoteCategory() {
+        return quoteCategory;
+    }
+
+    public void setQuoteCategory(QuoteCategory quoteCategory) {
+        this.quoteCategory = quoteCategory;
     }
 
     @Override
