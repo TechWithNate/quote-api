@@ -34,4 +34,12 @@ public class QuoteController {
         quoteService.deleteQuote(id);
     }
 
+    @PutMapping(path = "{quoteId}")
+    public void updateQuote(@PathVariable ("quoteId")
+                            Long id,
+                            @RequestParam(required = false) String quote,
+                            @RequestParam(required = false) String author){
+        quoteService.updateQuote(id, quote, author);
+    }
+
 }
