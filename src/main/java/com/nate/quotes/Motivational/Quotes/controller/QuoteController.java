@@ -29,6 +29,16 @@ public class QuoteController {
         quoteService.addQuote(quote);
     }
 
+    @PostMapping(path = "/love")
+    public void loveQuotes(@RequestBody Quote quote){
+        quoteService.addLoveQuote(quote);
+    }
+
+    @GetMapping(path = "/love")
+    public List<Quote> getLoveQuotes(){
+        return quoteService.getLoveQuotes();
+    }
+
     @DeleteMapping(path = "{quoteId}")
     public void deleteQuote(@PathVariable ("quoteId") Long id){
         quoteService.deleteQuote(id);
