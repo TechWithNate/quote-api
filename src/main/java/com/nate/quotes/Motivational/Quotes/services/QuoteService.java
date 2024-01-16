@@ -65,4 +65,17 @@ public class QuoteService {
         }
     }
 
+    public void addLoveQuote(Quote quote) {
+        Optional<Quote> quoteByTxt = quoteRepository.findByQuote(quote.getQuote());
+        Optional<Quote> quoteByAuthor = quoteRepository.findByAuthor(quote.getAuthor());
+
+        if (quoteByTxt.isPresent() && quoteByAuthor.isPresent()){
+            throw new IllegalStateException("Quote Already Present");
+        }
+        quoteRepository.save(quote);
+    }
+
+    public List<Quote> getLoveQuotes() {
+        return quoteRepository.findAll();
+    }
 }
